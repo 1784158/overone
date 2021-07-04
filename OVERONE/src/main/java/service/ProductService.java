@@ -13,7 +13,6 @@ public class ProductService {
         System.out.println("Выберите пункт меню (введите соответствующуу цифру):" +
                 "\n 1. показать весь список" +
                 "\n 2. показать продукты категории" +
-                "\n 3. Удалить продукт" +
                 "\n 4. Добавить продукт");
     }
 
@@ -60,19 +59,6 @@ public class ProductService {
         findAll(categoryList);
     }
 
-    public void deleteProduct() {
-        System.out.println("Введите ID продукта");
-        int id = readNumber();
-        Product product1 = new Product();
-        for (Product product : ProductRepository.dataBase()) {
-            if (id == product.getId()) {
-                product1 = product;
-            }
-        }
-        ProductRepository.dataBase().remove(product1);
-        System.out.println("Продукт удален!");
-        menuSelect();
-    }
 
     public String readString() {
         Scanner scanner = new Scanner(System.in);
@@ -99,9 +85,6 @@ public class ProductService {
                 break;
             case 2:
                 findByCategory();
-                break;
-            case 3:
-                deleteProduct();
                 break;
             case 4:
                 add();
